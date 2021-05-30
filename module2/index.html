@@ -3,28 +3,48 @@
 <head>
 	<! This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp>
 	<link href="styles/style.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
 <body>
+<div class="name">
+  <h1>AdaptMart: The adaptable online grocery store </h1>
+</div>
+
 
 <!-- Tab links, each one with an onclick event associated with it -->
-<div class="tab">
+<div class="tab d-flex justify-content-center align-items-center">
   <button class="tablinks" onclick="openInfo(event, 'Client')">Client</button>
   <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
   <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+  <div class="priceDisplay">
+    <script type="text/javascript" src="./scripts/groceries.js"></script><script type="text/javascript" src="./scripts/main.js"></script>
+    <script language="javascript">
+       cartPrice();
+    </script>
+  </div>
 </div>
+
+
 
 <!-- Tab content -->
 <div id="Client" class="tabcontent">
   <h3>Client Information</h3>
   <p>Tell us a bit about you.</p>
 	Choose a Category:
-	<select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
+	<select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct', 'orgSelect')">
 	<option value=""></option>
-	<option value="Vegetarian">Vegetarian</option>
-    <option value="GlutenFree">GlutenFree</option>
+	<option value="Lactose">Lactose Intolerant</option>
+    <option value="NutsAllergies">Nuts Allergies</option>
     <option value="None">None</option>
 	</select>
+  <br>
+  Do you have any preferences for organic products ?
+  <select id="orgSelect" name="orgSelect" onchange="populateListProductChoices('dietSelect', 'displayProduct', this.id)">
+    <option value=""></option>
+    <option value="Organic">Organic</option>
+      <option value="NoPreferences">No Preferences</option>
+    </select>
 </div>
 
 <div id="Products" class="tabcontent">
@@ -43,8 +63,9 @@
   <div id="displayCart"></div>
 </div>
 
+
 <script src="scripts/groceries.js"></script>
 <script src="scripts/main.js"></script>
-
+<div class="signature d-flex justify-content-center"> <p>Site web concu par Peache</p></div>
 </body>
 </html>

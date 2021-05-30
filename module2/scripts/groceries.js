@@ -4,23 +4,74 @@
 
 var products = [
 	{
-		name: "brocoli",
-		vegetarian: true,
-		glutenFree: true,
+		name: "Yogurt",
+		lactose: true,
+		nuts: false,
+		organic: false,
 		price: 1.99
 	},
 	{
-		name: "bread",
-		vegetarian: true,
-		glutenFree: false,
+		name: "Milk",
+		lactose: true,
+		nuts: false,
+		organic: false,
+		price: 2.99
+	},
+	{
+		name: "Mozarella Cheese",
+		lactose: true,
+		nuts: false,
+		price: 5.99
+	},
+	{
+		name: "Almond Milk",
+		lactose: false,
+		nuts: true,
+		organic: true,
+		price: 7.35
+	},
+	{
+		name: "Soy Milk",
+		lactose: false,
+		nuts: false,
+		organic: true,
+		price: 5.35
+	},
+	{
+		name: "Whole Grain Bread",
+		lactose: false,
+		nuts: true,
+		organic: true,
+		price: 10.00
+	},
+	{
+		name: "Multi-Nuts Granola",
+		lactose: false,
+		nuts: true,
+		organic: false,
 		price: 2.35
 	},
 	{
-		name: "salmon",
-		vegetarian: false,
-		glutenFree: true,
+		name: "Peanut butter",
+		lactose: false,
+		nuts: true,
+		organic: false,
+		price: 8.99
+	},
+	{
+		name: "Salmon",
+		lactose: false,
+		nuts: false,
+		organic: true,
 		price: 10.00
-	}
+	},
+	{
+		name: "Ketchup",
+		lactose: false,
+		nuts: false,
+		organic: true,
+		price: 5.25
+	},
 ];
 	
 
@@ -28,20 +79,24 @@ var products = [
 // given restrictions provided, make a reduced list of products
 // prices should be included in this list, as well as a sort based on price
 
-function restrictListProducts(prods, restriction) {
-	let product_names = [];
+function restrictListProducts(prods, restriction, rest2 ) {
+	let product = [];
 	for (let i=0; i<prods.length; i+=1) {
-		if ((restriction == "Vegetarian") && (prods[i].vegetarian == true)){
-			product_names.push(prods[i].name);
-		}
-		else if ((restriction == "GlutenFree") && (prods[i].glutenFree == true)){
-			product_names.push(prods[i].name);
-		}
-		else if (restriction == "None"){
-			product_names.push(prods[i].name);
+		if((rest2 == "Organic" && prods[i].organic == true )|| (rest2 != "Organic" )){
+			if ((restriction == "Lactose") && (prods[i].lactose == false)){
+				product.push(prods[i]);
+			}
+			else if ((restriction == "NutsAllergies") && (prods[i].nuts == false)){
+				product.push(prods[i]);
+			}
+			else if (restriction == "None"){
+				product.push(prods[i]);
+			}
 		}
 	}
-	return product_names;
+	product.sort((a, b) => (a.price > b.price) ? 1 : -1)
+
+	return product;
 }
 
 // Calculate the total price of items, with received parameter being a list of products

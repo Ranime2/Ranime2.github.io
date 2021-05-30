@@ -34,4 +34,19 @@
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  text-align: center;
+}
+
+.priceDisplay {
+  color: red;
+  padding: 6px 12px;
+}
+.signature  {
+  position: fixed; 
+  bottom:0%;
+  width:100%;
+}
+h1{
+  text-align: center;
+  padding-bottom: 5vh;
 }
