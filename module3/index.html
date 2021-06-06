@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<! This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp>
+	<link href="styles/style.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="title">
+  <div class="header1 h1">AdaptMart : </div>
+  <div class="header2 h1">The adaptable online grocery store </div>
+</div>
+
+
+
+  <div class="tab d-flex justify-content-center align-items-center">
+    <div class="priceDisplay">
+      <script type="text/javascript" src="./scripts/groceries.js"></script><script type="text/javascript" src="./scripts/main.js"></script>
+      <script language="javascript">
+         cartPrice();
+      </script>
+    </div>
+
+</div>
+
+<!-- Tab links, each one with an onclick event associated with it -->
+
+
+<!-- Tab content -->
+<button class="accordion"onclick="openInfo(event, 'Client')">1 - Set Preferences</button>
+<div id="Client" class="tabcontent panel">
+  <br>
+  <h3>Client Information</h3>
+  <p>Tell us a bit about you.</p>
+  Do yoy have any allergy ?<br>
+  <div class="checks">
+    <input type="checkbox" id="dietSelect1" name="dietSelect1" value="Lactose" onclick="addAllergy(this.value)">
+    <label for="dietSelect1"> Lactose Intolerant</label><br>
+    <input type="checkbox" id="dietSelect2" name="dietSelect2" value="NutsAllergies" onclick="addAllergy(this.value)">
+    <label for="dietSelect1"> Nuts Allergies</label><br> 
+  </div>
+  <br>
+  <br>
+  <br>
+  Do you have any preferences for organic products ?<br>
+  <select id="orgSelect" name="orgSelect">
+
+    <option value="NoPreferences">No Preferences</option>
+    <option value="Organic">Organic</option>
+      
+  </select>
+  <br>
+  <br>
+  <br>
+  <button class="btn  btn-outline-primary" onclick="openInfo(event, 'Products')">Submit Preferences</button>
+  <br>
+  <br>
+</div>
+
+<button class="accordion" onclick="openInfo(event, 'Products')">2 - Choose Products</button>
+<div id="Products" class="tabcontent panel">
+  <br>
+  <h3>Your targeted products</h3>
+  <p>We preselected products based on your restrictions.</p>
+	 Choose items to buy:<br>
+   L = Contains Lactose, N = contains nuts, O = Organic <br><br>
+	 <div id="displayProduct"></div>
+   <br><br>
+	 <button id="addCart" type="button" class="btn  btn-outline-primary" onclick="selectedItems()">
+		Add selected items to cart
+	</button>
+  <br>
+  <br>
+</div>
+
+<button class="accordion" onclick="openInfo(event, 'Cart')">3 - Checkout Your Cart</button>
+
+<div id="Cart" class="tabcontent">
+  <br>
+  <h3>Cart</h3>
+  <p>Here is your cart.</p>
+  <div id="displayCart"></div>
+  <br>
+  <br>
+</div>
+
+
+<script src="scripts/groceries.js"></script>
+<script src="scripts/main.js"></script>
+<div class="signature d-flex justify-content-center"> <p>Site web concu par Peache</p></div>
+</body>
+</html>
